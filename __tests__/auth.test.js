@@ -1,6 +1,6 @@
-const { mockFirebase } = require('firestore-jest-mock');
-const { mockInitializeApp } = require('../mocks/firebase');
-const {
+import { mockFirebase } from '../index';
+import { mockInitializeApp } from '../mocks/firebase';
+import {
   mockCreateUserWithEmailAndPassword,
   mockSignInWithEmailAndPassword,
   mockSignOut,
@@ -11,7 +11,7 @@ const {
   mockCreateCustomToken,
   mockSetCustomUserClaims,
   mockUseEmulator,
-} = require('../mocks/auth');
+} from '../mocks/auth';
 
 describe('we can start a firebase application', () => {
   mockFirebase({
@@ -36,10 +36,10 @@ describe('we can start a firebase application', () => {
     currentUser: { uid: 'abc123', displayName: 'Bob' },
   });
 
-  beforeEach(() => {
-    jest.clearAllMocks();
-    this.firebase = require('firebase');
-    this.admin = require('firebase-admin');
+  beforeEach(async () => {
+    vi.clearAllMocks();
+    this.firebase = await import('firebase');
+    this.admin = await import('firebase-admin');
     this.firebase.initializeApp({
       apiKey: '### FIREBASE API KEY ###',
       authDomain: '### FIREBASE AUTH DOMAIN ###',
@@ -108,7 +108,7 @@ describe('we can start a firebase application', () => {
       test('get currentUser object', async () => {
         expect.assertions(2);
         const currentUser = await this.admin.auth().currentUser;
-        expect(currentUser.uid).toEqual('abc123');
+        expect(currentUser.uid).toBe('abc123');
         expect(currentUser.data.displayName).toBe('Bob');
       });
 
@@ -119,7 +119,7 @@ describe('we can start a firebase application', () => {
         };
         const token = await this.admin.auth().createCustomToken('some-uid', claims);
         expect(mockCreateCustomToken).toHaveBeenCalledWith('some-uid', claims);
-        expect(token).toEqual('');
+        expect(token).toBe('');
       });
 
       test('set custom user claims', async () => {

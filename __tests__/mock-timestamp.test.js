@@ -1,10 +1,6 @@
-const { FakeFirestore } = require('firestore-jest-mock');
-const {
-  mockTimestampToDate,
-  mockTimestampToMillis,
-  mockTimestampNow,
-} = require('firestore-jest-mock/mocks/firestore');
-const admin = require('firebase-admin');
+import { FakeFirestore } from '../index';
+import { mockTimestampToDate, mockTimestampToMillis, mockTimestampNow } from '../mocks/firestore';
+import admin from 'firebase-admin';
 const ref = admin.firestore.Timestamp;
 
 describe('Timestamp mock', () => {

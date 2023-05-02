@@ -11,11 +11,11 @@ export class Transaction {
 }
 
 export const mocks: {
-  mockGetAll: jest.Mock;
-  mockGetAllTransaction: jest.Mock;
-  mockGetTransaction: jest.Mock;
-  mockSetTransaction: jest.Mock;
-  mockUpdateTransaction: jest.Mock;
-  mockDeleteTransaction: jest.Mock;
-  mockCreateTransaction: jest.Mock;
+  mockGetAll: vi.Mock;
+  mockGetAllTransaction: vi.Mock;
+  mockGetTransaction: vi.Mock;
+  mockSetTransaction: vi.Mock;
+  mockUpdateTransaction: vi.Mock;
+  mockDeleteTransaction: vi.Mock;
+  mockCreateTransaction: vi.Mock;
 };

@@ -1,8 +1,8 @@
-const mockArrayUnionFieldValue = jest.fn();
-const mockArrayRemoveFieldValue = jest.fn();
-const mockDeleteFieldValue = jest.fn();
-const mockIncrementFieldValue = jest.fn();
-const mockServerTimestampFieldValue = jest.fn();
+const mockArrayUnionFieldValue = vi.fn();
+const mockArrayRemoveFieldValue = vi.fn();
+const mockDeleteFieldValue = vi.fn();
+const mockIncrementFieldValue = vi.fn();
+const mockServerTimestampFieldValue = vi.fn();
 
 class FieldValue {
   constructor(type, value) {
@@ -46,7 +46,7 @@ class FieldValue {
   }
 }
 
-module.exports = {
+export default {
   FieldValue,
   mocks: {
     mockArrayUnionFieldValue,

@@ -1,10 +1,10 @@
-const mockGetAll = jest.fn();
-const mockGetAllTransaction = jest.fn();
-const mockGetTransaction = jest.fn();
-const mockSetTransaction = jest.fn();
-const mockUpdateTransaction = jest.fn();
-const mockDeleteTransaction = jest.fn();
-const mockCreateTransaction = jest.fn();
+const mockGetAll = vi.fn();
+const mockGetAllTransaction = vi.fn();
+const mockGetTransaction = vi.fn();
+const mockSetTransaction = vi.fn();
+const mockUpdateTransaction = vi.fn();
+const mockDeleteTransaction = vi.fn();
+const mockCreateTransaction = vi.fn();
 
 class Transaction {
   getAll(...refsOrReadOptions) {
@@ -49,7 +49,7 @@ class Transaction {
   }
 }
 
-module.exports = {
+export default {
   Transaction,
   mocks: {
     mockGetAll,

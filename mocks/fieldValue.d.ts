@@ -13,9 +13,9 @@ export class FieldValue {
 }
 
 export const mocks: {
-  mockArrayUnionFieldValue: jest.Mock;
-  mockArrayRemoveFieldValue: jest.Mock;
-  mockDeleteFieldValue: jest.Mock;
-  mockIncrementFieldValue: jest.Mock;
-  mockServerTimestampFieldValue: jest.Mock;
+  mockArrayUnionFieldValue: vi.Mock;
+  mockArrayRemoveFieldValue: vi.Mock;
+  mockDeleteFieldValue: vi.Mock;
+  mockIncrementFieldValue: vi.Mock;
+  mockServerTimestampFieldValue: vi.Mock;
 };

@@ -1,10 +1,10 @@
-const { FakeFirestore } = require('firestore-jest-mock');
-const { mockCollection, mockDoc } = require('firestore-jest-mock/mocks/firestore');
+import { FakeFirestore } from '../index';
+import { mockCollection, mockDoc } from '../mocks/firestore';
 
 describe('Firestore options', () => {
   beforeEach(() => {
-    jest.resetModules();
-    jest.clearAllMocks();
+    vi.resetModules();
+    vi.clearAllMocks();
   });
 
   const database = {
@@ -41,10 +41,7 @@ describe('Firestore options', () => {
   describe('Single records versus queries', () => {
     test('it can fetch a single record', async () => {
       expect.assertions(7);
-      const record = await db
-        .collection('characters')
-        .doc('krusty')
-        .get();
+      const record = await db.collection('characters').doc('krusty').get();
       expect(mockCollection).toHaveBeenCalledWith('characters');
       expect(mockDoc).toHaveBeenCalledWith('krusty');
       expect(record.exists).toBe(true);

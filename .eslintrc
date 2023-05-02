@@ -1,12 +1,13 @@
 {
   "root": true,
   "ignorePatterns": ["dist", "node_modules"],
-  "extends": ["@upstatement", "plugin:jest/recommended"],
-  "plugins": ["jest"],
+  "extends": ["@upstatement", "plugin:vitest/recommended", "plugin:vitest-globals/recommended"],
+  "plugins": ["vitest"],
   "parserOptions": {
     "sourceType": "module"
   },
   "env": {
+    "vitest-globals/env": true,
     "browser": true,
     "node": true,
     "es6": true,

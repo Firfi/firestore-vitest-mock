@@ -1,10 +1,10 @@
-const { FakeFirestore } = require('firestore-jest-mock');
-const { mockCollection, mockDoc } = require('firestore-jest-mock/mocks/firestore');
+import { FakeFirestore } from '../index';
+import { mockCollection, mockDoc } from '../mocks/firestore';
 
 describe('database mutations', () => {
   beforeEach(() => {
-    jest.resetModules();
-    jest.clearAllMocks();
+    vi.resetModules();
+    vi.clearAllMocks();
   });
 
   // db is a fn, instead a shared variable to enforce sandboxing data on each test.
@@ -62,8 +62,8 @@ describe('database mutations', () => {
     const homer = mdb.collection('characters').doc('homer');
     await homer.set({ occupation: 'Astronaut' }, { merge: true });
     const doc = await homer.get();
-    expect(doc.data().name).toEqual('Homer');
-    expect(doc.data().occupation).toEqual('Astronaut');
+    expect(doc.data().name).toBe('Homer');
+    expect(doc.data().occupation).toBe('Astronaut');
   });
 
   test('it correctly overwrites data on set', async () => {
@@ -72,7 +72,7 @@ describe('database mutations', () => {
     await homer.set({ occupation: 'Astronaut' });
     const doc = await homer.get();
     expect(doc.data().name).toBeUndefined();
-    expect(doc.data().occupation).toEqual('Astronaut');
+    expect(doc.data().occupation).toBe('Astronaut');
   });
 
   test('it can batch appropriately', async () => {
@@ -86,11 +86,11 @@ describe('database mutations', () => {
       .commit();
 
     const homerData = (await homer.get()).data();
-    expect(homerData.name).toEqual('Homer');
-    expect(homerData.drink).toEqual('duff');
+    expect(homerData.name).toBe('Homer');
+    expect(homerData.drink).toBe('duff');
     const krustyData = (await krusty.get()).data();
     expect(krustyData.name).toBeUndefined();
-    expect(krustyData.causeOfDeath).toEqual('Simian homicide');
+    expect(krustyData.causeOfDeath).toBe('Simian homicide');
   });
 
   test('it can add to collection', async () => {

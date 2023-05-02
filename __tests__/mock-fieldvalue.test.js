@@ -1,19 +1,24 @@
-const { mockFirebase } = require('firestore-jest-mock');
+import { mockFirebase } from '../index';
 mockFirebase({ database: {} });
-const firebase = require('firebase');
 
-const {
+import {
   mockArrayRemoveFieldValue,
   mockArrayUnionFieldValue,
   mockDeleteFieldValue,
   mockIncrementFieldValue,
   mockServerTimestampFieldValue,
-} = require('../mocks/firestore');
+} from '../mocks/firestore';
 
 describe('Single values transformed by field sentinels', () => {
+  let firebase;
+
+  beforeAll(async () => {
+    firebase = await import('firebase');
+  });
+
   beforeEach(() => {
-    jest.resetModules();
-    jest.clearAllMocks();
+    vi.resetModules();
+    vi.clearAllMocks();
   });
 
   test('it is distinct from other field value instances', () => {

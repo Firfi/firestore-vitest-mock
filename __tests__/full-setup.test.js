@@ -6,68 +6,92 @@ describe.each`
   // We call `require` inside of a parameterized `describe` so we get
   // a fresh mocked Firebase to test cases with query filters turned on and off
 
-  jest.resetModules();
-  const { mockFirebase } = require('firestore-jest-mock');
-  const { mockInitializeApp } = require('../mocks/firebase');
-
+  vi.resetModules();
   const flushPromises = () => new Promise(setImmediate);
-  const { Timestamp } = require('../mocks/timestamp');
-  const {
-    mockGet,
-    mockSelect,
-    mockAdd,
-    mockSet,
-    mockUpdate,
-    mockWhere,
-    mockCollectionGroup,
-    mockBatch,
-    mockBatchCommit,
-    mockBatchDelete,
-    mockBatchUpdate,
-    mockBatchSet,
-    mockSettings,
-    mockOnSnapShot,
-    mockUseEmulator,
-    mockDoc,
-    mockCollection,
-    mockWithConverter,
-    FakeFirestore,
-    mockQueryOnSnapshot,
-    mockTimestampNow,
-  } = require('../mocks/firestore');
+  let mockGet;
+  let mockSelect;
+  let mockAdd;
+  let mockSet;
+  let mockUpdate;
+  let mockWhere;
+  let mockCollectionGroup;
+  let mockBatch;
+  let mockBatchCommit;
+  let mockBatchDelete;
+  let mockBatchUpdate;
+  let mockBatchSet;
+  let mockSettings;
+  let mockOnSnapShot;
+  let mockUseEmulator;
+  let mockDoc;
+  let mockCollection;
+  let mockWithConverter;
+  let FakeFirestore;
+  let mockQueryOnSnapshot;
+  let mockTimestampNow;
+  let mockFirebase;
+  let mockInitializeApp;
+  let Timestamp;
 
-  mockFirebase(
-    {
-      database: {
-        users: [
-          { id: 'abc123', first: 'Bob', last: 'builder', born: 1998 },
-          {
-            id: '123abc',
-            first: 'Blues',
-            last: 'builder',
-            born: 1996,
-            _collections: {
-              cities: [
-                { id: 'LA', name: 'Los Angeles', state: 'CA', country: 'USA', visited: true },
-                { id: 'Mex', name: 'Mexico City', country: 'Mexico', visited: true },
-              ],
+  let firebase;
+
+  beforeAll(async () => {
+    const fs = await import('../mocks/firestore');
+    mockGet = fs.mockGet;
+    mockSelect = fs.mockSelect;
+    mockAdd = fs.mockAdd;
+    mockSet = fs.mockSet;
+    mockUpdate = fs.mockUpdate;
+    mockWhere = fs.mockWhere;
+    mockCollectionGroup = fs.mockCollectionGroup;
+    mockBatch = fs.mockBatch;
+    mockBatchCommit = fs.mockBatchCommit;
+    mockBatchDelete = fs.mockBatchDelete;
+    mockBatchUpdate = fs.mockBatchUpdate;
+    mockBatchSet = fs.mockBatchSet;
+    mockSettings = fs.mockSettings;
+    mockOnSnapShot = fs.mockOnSnapShot;
+    mockUseEmulator = fs.mockUseEmulator;
+    mockDoc = fs.mockDoc;
+    mockCollection = fs.mockCollection;
+    mockWithConverter = fs.mockWithConverter;
+    FakeFirestore = fs.FakeFirestore;
+    mockQueryOnSnapshot = fs.mockQueryOnSnapshot;
+    mockTimestampNow = fs.mockTimestampNow;
+    mockFirebase = (await import('../index')).mockFirebase;
+    mockInitializeApp = (await import('../mocks/firebase')).mockInitializeApp;
+    Timestamp = (await import('../mocks/timestamp')).Timestamp;
+    mockFirebase(
+      {
+        database: {
+          users: [
+            { id: 'abc123', first: 'Bob', last: 'builder', born: 1998 },
+            {
+              id: '123abc',
+              first: 'Blues',
+              last: 'builder',
+              born: 1996,
+              _collections: {
+                cities: [
+                  { id: 'LA', name: 'Los Angeles', state: 'CA', country: 'USA', visited: true },
+                  { id: 'Mex', name: 'Mexico City', country: 'Mexico', visited: true },
+                ],
+              },
             },
-          },
-        ],
-        cities: [
-          { id: 'LA', name: 'Los Angeles', state: 'CA', country: 'USA' },
-          { id: 'DC', name: 'Disctric of Columbia', state: 'DC', country: 'USA' },
-        ],
+          ],
+          cities: [
+            { id: 'LA', name: 'Los Angeles', state: 'CA', country: 'USA' },
+            { id: 'DC', name: 'Disctric of Columbia', state: 'DC', country: 'USA' },
+          ],
+        },
       },
-    },
-    { simulateQueryFilters: filters },
-  );
-
-  /** @type {import('firebase').default} */
-  const firebase = require('firebase');
+      { simulateQueryFilters: filters },
+    );
+    firebase = await import('firebase');
+  });
 
   beforeEach(() => {
-    jest.resetAllMocks();
+    vi.resetAllMocks();
     firebase.initializeApp({
       apiKey: '### FIREBASE API KEY ###',
       authDomain: '### FIREBASE AUTH DOMAIN ###',
@@ -315,9 +339,7 @@ describe.each`
       const db = firebase.firestore();
 
       expect(() => {
-        db.collection('cities')
-          .doc('LA')
-          .listCollections();
+        db.collection('cities').doc('LA').listCollections();
       }).toThrow(TypeError);
     });
 
@@ -434,10 +456,7 @@ describe.each`
       test('single undefined document', async () => {
         const db = firebase.firestore();
 
-        const recordDoc = db
-          .collection('cities')
-          .withConverter(converter)
-          .doc();
+        const recordDoc = db.collection('cities').withConverter(converter).doc();
 
         expect(mockCollection).toHaveBeenCalledWith('cities');
         expect(mockWithConverter).toHaveBeenCalledWith(converter);

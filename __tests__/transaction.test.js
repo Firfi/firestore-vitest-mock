@@ -1,5 +1,5 @@
-const { mockFirebase, FakeFirestore } = require('firestore-jest-mock');
-const {
+import { mockFirebase, FakeFirestore } from '../index';
+import {
   mockRunTransaction,
   mockDelete,
   mockDeleteTransaction,
@@ -12,26 +12,34 @@ const {
   mockGetAll,
   mockGetAllTransaction,
   mockCreateTransaction,
-} = require('firestore-jest-mock/mocks/firestore');
+} from '../mocks/firestore';
 
 describe('Transactions', () => {
   mockFirebase({
     database: {},
   });
-  const firebase = require('firebase');
-  firebase.initializeApp({
-    apiKey: '### FIREBASE API KEY ###',
-    authDomain: '### FIREBASE AUTH DOMAIN ###',
-    projectId: '### CLOUD FIRESTORE PROJECT ID ###',
-  });
-  const db = firebase.firestore();
+  const initDb = async () => {
+    const firebase = await import('firebase');
+    firebase.initializeApp({
+      apiKey: '### FIREBASE API KEY ###',
+      authDomain: '### FIREBASE AUTH DOMAIN ###',
+      projectId: '### CLOUD FIRESTORE PROJECT ID ###',
+    });
+    return firebase.firestore();
+  };
 
-  beforeEach(() => {
-    jest.resetModules();
-    jest.clearAllMocks();
+  let db;
+
+  beforeAll(async () => {
+    db = await initDb();
   });
 
-  test('it returns a Promise', () => {
+  beforeEach(async () => {
+    vi.resetModules();
+    vi.clearAllMocks();
+  });
+
+  test('it returns a Promise', async () => {
     const result = db.runTransaction(async () => {});
 
     expect(result).toBeInstanceOf(Promise);
@@ -44,7 +52,7 @@ describe('Transactions', () => {
   });
 
   test('it provides a Transaction object', () => {
-    const runner = jest.fn().mockReturnValue(Promise.resolve());
+    const runner = vi.fn().mockReturnValue(Promise.resolve());
     const result = db.runTransaction(runner);
 
     expect(result).toBeInstanceOf(Promise);

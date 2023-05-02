@@ -12,9 +12,9 @@ export class Timestamp {
 }
 
 export const mocks: {
-  mockTimestampToDate: jest.Mock;
-  mockTimestampToMillis: jest.Mock;
-  mockTimestampFromDate: jest.Mock;
-  mockTimestampFromMillis: jest.Mock;
-  mockTimestampNow: jest.Mock;
+  mockTimestampToDate: vi.Mock;
+  mockTimestampToMillis: vi.Mock;
+  mockTimestampFromDate: vi.Mock;
+  mockTimestampFromMillis: vi.Mock;
+  mockTimestampNow: vi.Mock;
 };

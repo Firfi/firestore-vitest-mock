@@ -22,9 +22,9 @@ type DefaultOptions = typeof import('./helpers/defaultMockOptions');
 export interface StubOptions extends Partial<DefaultOptions> {}
 
 export interface FirebaseMock {
-  initializeApp: jest.Mock;
+  initializeApp: vi.Mock;
   credential: {
-    cert: jest.Mock;
+    cert: vi.Mock;
   };
   auth(): FakeAuth;
   firestore(): FakeFirestore;
@@ -32,5 +32,5 @@ export interface FirebaseMock {
 
 export const firebaseStub: (overrides?: StubOverrides, options?: StubOptions) => FirebaseMock;
 export const mockFirebase: (overrides?: StubOverrides, options?: StubOptions) => void;
-export const mockInitializeApp: jest.Mock;
-export const mockCert: jest.Mock;
+export const mockInitializeApp: vi.Mock;
+export const mockCert: vi.Mock;

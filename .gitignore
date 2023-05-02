@@ -17,6 +17,6 @@ yarn-error.log*
 *.sln
 *.sw?
 
-# Jest
+# Vitest
 /coverage
 server/coverage

@@ -17,14 +17,14 @@ export class Query {
 }
 
 export const mocks: {
-  mockGet: jest.Mock,
-  mockSelect: jest.Mock,
-  mockWhere: jest.Mock,
-  mockLimit: jest.Mock,
-  mockOrderBy: jest.Mock,
-  mockOffset: jest.Mock,
-  mockStartAfter: jest.Mock,
-  mockStartAt: jest.Mock,
-  mockQueryOnSnapshot: jest.Mock,
-  mockWithConverter: jest.Mock,
+  mockGet: vi.Mock,
+  mockSelect: vi.Mock,
+  mockWhere: vi.Mock,
+  mockLimit: vi.Mock,
+  mockOrderBy: vi.Mock,
+  mockOffset: vi.Mock,
+  mockStartAfter: vi.Mock,
+  mockStartAt: vi.Mock,
+  mockQueryOnSnapshot: vi.Mock,
+  mockWithConverter: vi.Mock,
 };

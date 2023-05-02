@@ -1,10 +1,10 @@
-const mockTimestampToDate = jest.fn();
-const mockTimestampToMillis = jest.fn();
-const mockTimestampFromDate = jest.fn();
-const mockTimestampFromMillis = jest.fn();
-const mockTimestampNow = jest.fn();
+const mockTimestampToDate = vi.fn();
+const mockTimestampToMillis = vi.fn();
+const mockTimestampFromDate = vi.fn();
+const mockTimestampFromMillis = vi.fn();
+const mockTimestampNow = vi.fn();
 
-class Timestamp {
+export class Timestamp {
   constructor(seconds, nanoseconds) {
     this.seconds = seconds;
     this.nanoseconds = nanoseconds;
@@ -92,7 +92,7 @@ function convertTimestamps(data, path = []) {
   return data;
 }
 
-module.exports = {
+export default {
   Timestamp,
   convertTimestamps,
   mocks: {

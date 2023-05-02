@@ -1,37 +1,37 @@
-const mockCollectionGroup = jest.fn();
-const mockBatch = jest.fn();
-const mockRunTransaction = jest.fn();
+export const mockCollectionGroup = vi.fn();
+export const mockBatch = vi.fn();
+export const mockRunTransaction = vi.fn();
 
-const mockSettings = jest.fn();
-const mockUseEmulator = jest.fn();
-const mockCollection = jest.fn();
-const mockDoc = jest.fn();
-const mockUpdate = jest.fn();
-const mockSet = jest.fn();
-const mockAdd = jest.fn();
-const mockDelete = jest.fn();
-const mockListDocuments = jest.fn();
-const mockListCollections = jest.fn();
+export const mockSettings = vi.fn();
+export const mockUseEmulator = vi.fn();
+export const mockCollection = vi.fn();
+export const mockDoc = vi.fn();
+export const mockUpdate = vi.fn();
+export const mockSet = vi.fn();
+export const mockAdd = vi.fn();
+export const mockDelete = vi.fn();
+export const mockListDocuments = vi.fn();
+export const mockListCollections = vi.fn();
 
-const mockBatchDelete = jest.fn();
-const mockBatchCommit = jest.fn();
-const mockBatchUpdate = jest.fn();
-const mockBatchSet = jest.fn();
+export const mockBatchDelete = vi.fn();
+export const mockBatchCommit = vi.fn();
+export const mockBatchUpdate = vi.fn();
+export const mockBatchSet = vi.fn();
 
-const mockOnSnapShot = jest.fn();
+export const mockOnSnapShot = vi.fn();
 
-const timestamp = require('./timestamp');
-const fieldValue = require('./fieldValue');
-const query = require('./query');
-const transaction = require('./transaction');
-const path = require('./path');
+import timestamp from './timestamp';
+import fieldValue from './fieldValue';
+import query from './query';
+import transaction from './transaction';
+import path from './path';
 
-const buildDocFromHash = require('./helpers/buildDocFromHash');
-const buildQuerySnapShot = require('./helpers/buildQuerySnapShot');
+import buildDocFromHash from './helpers/buildDocFromHash';
+import buildQuerySnapShot from './helpers/buildQuerySnapShot';
 
 const _randomId = () => Math.floor(Math.random() * Number.MAX_SAFE_INTEGER).toString();
 
-class FakeFirestore {
+export class FakeFirestore {
   constructor(stubbedDatabase = {}, options = {}) {
     this.database = timestamp.convertTimestamps(stubbedDatabase);
     this.query = new query.Query('', this);
@@ -242,10 +242,7 @@ FakeFirestore.DocumentReference = class {
     this.id = id;
     this.parent = parent;
     this.firestore = parent.firestore;
-    this.path = parent.path
-      .split('/')
-      .concat(id)
-      .join('/');
+    this.path = parent.path.split('/').concat(id).join('/');
   }
 
   collection(collectionName) {
@@ -534,7 +531,7 @@ FakeFirestore.CollectionReference = class extends FakeFirestore.Query {
   }
 };
 
-module.exports = {
+export default {
   FakeFirestore,
   mockBatch,
   mockRunTransaction,
@@ -559,3 +556,32 @@ module.exports = {
   ...fieldValue.mocks,
   ...timestamp.mocks,
 };
+
+export const mockGet = query.mocks.mockGet;
+export const mockSelect = query.mocks.mockSelect;
+export const mockWhere = query.mocks.mockWhere;
+export const mockLimit = query.mocks.mockLimit;
+export const mockOrderBy = query.mocks.mockOrderBy;
+export const mockOffset = query.mocks.mockOffset;
+export const mockStartAfter = query.mocks.mockStartAfter;
+export const mockStartAt = query.mocks.mockStartAt;
+export const mockQueryOnSnapshot = query.mocks.mockQueryOnSnapshot;
+export const mockWithConverter = query.mocks.mockWithConverter;
+
+export const mockGetAll = transaction.mocks.mockGetAll;
+export const mockGetAllTransaction = transaction.mocks.mockGetAllTransaction;
+export const mockGetTransaction = transaction.mocks.mockGetTransaction;
+export const mockSetTransaction = transaction.mocks.mockSetTransaction;
+export const mockUpdateTransaction = transaction.mocks.mockUpdateTransaction;
+export const mockDeleteTransaction = transaction.mocks.mockDeleteTransaction;
+export const mockCreateTransaction = transaction.mocks.mockCreateTransaction;
+export const mockArrayUnionFieldValue = fieldValue.mocks.mockArrayUnionFieldValue;
+export const mockArrayRemoveFieldValue = fieldValue.mocks.mockArrayRemoveFieldValue;
+export const mockDeleteFieldValue = fieldValue.mocks.mockDeleteFieldValue;
+export const mockIncrementFieldValue = fieldValue.mocks.mockIncrementFieldValue;
+export const mockServerTimestampFieldValue = fieldValue.mocks.mockServerTimestampFieldValue;
+export const mockTimestampToDate = timestamp.mocks.mockTimestampToDate;
+export const mockTimestampToMillis = timestamp.mocks.mockTimestampToMillis;
+export const mockTimestampFromDate = timestamp.mocks.mockTimestampFromDate;
+export const mockTimestampFromMillis = timestamp.mocks.mockTimestampFromMillis;
+export const mockTimestampNow = timestamp.mocks.mockTimestampNow;

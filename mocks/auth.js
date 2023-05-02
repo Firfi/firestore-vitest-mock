@@ -1,16 +1,16 @@
-const mockCreateUserWithEmailAndPassword = jest.fn();
-const mockDeleteUser = jest.fn();
-const mockSendVerificationEmail = jest.fn();
-const mockSignInWithEmailAndPassword = jest.fn();
-const mockSendPasswordResetEmail = jest.fn();
-const mockVerifyIdToken = jest.fn();
-const mockGetUser = jest.fn();
-const mockCreateCustomToken = jest.fn();
-const mockSetCustomUserClaims = jest.fn();
-const mockSignOut = jest.fn();
-const mockUseEmulator = jest.fn();
+export const mockCreateUserWithEmailAndPassword = vi.fn();
+export const mockDeleteUser = vi.fn();
+export const mockSendVerificationEmail = vi.fn();
+export const mockSignInWithEmailAndPassword = vi.fn();
+export const mockSendPasswordResetEmail = vi.fn();
+export const mockVerifyIdToken = vi.fn();
+export const mockGetUser = vi.fn();
+export const mockCreateCustomToken = vi.fn();
+export const mockSetCustomUserClaims = vi.fn();
+export const mockSignOut = vi.fn();
+export const mockUseEmulator = vi.fn();
 
-class FakeAuth {
+export class FakeAuth {
   constructor(currentUser = {}) {
     currentUser.sendEmailVerification = mockSendVerificationEmail;
     this.currentUserRecord = currentUser;
@@ -66,7 +66,7 @@ class FakeAuth {
   }
 }
 
-module.exports = {
+export default {
   FakeAuth,
   mockCreateUserWithEmailAndPassword,
   mockDeleteUser,

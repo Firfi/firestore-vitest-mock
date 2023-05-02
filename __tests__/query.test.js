@@ -1,12 +1,12 @@
-const {
+import {
   mockCollection,
   mockDoc,
   mockGet,
   mockWhere,
   mockOffset,
   FakeFirestore,
-} = require('../mocks/firestore');
-const { mockFirebase } = require('firestore-jest-mock');
+} from '../mocks/firestore';
+import { mockFirebase } from '../index';
 
 describe('Queries', () => {
   mockFirebase(
@@ -128,21 +128,19 @@ describe('Queries', () => {
     },
     { simulateQueryFilters: true },
   );
-
-  const firebase = require('firebase');
-  firebase.initializeApp({
-    apiKey: '### FIREBASE API KEY ###',
-    authDomain: '### FIREBASE AUTH DOMAIN ###',
-    projectId: '### CLOUD FIRESTORE PROJECT ID ###',
+  let db;
+  beforeAll(async () => {
+    const firebase = await import('firebase');
+    firebase.initializeApp({
+      apiKey: '### FIREBASE API KEY ###',
+      authDomain: '### FIREBASE AUTH DOMAIN ###',
+      projectId: '### CLOUD FIRESTORE PROJECT ID ###',
+    });
+    db = firebase.firestore();
   });
 
-  const db = firebase.firestore();
-
   test('it can query a single document', async () => {
-    const monkey = await db
-      .collection('animals')
-      .doc('monkey')
-      .get();
+    const monkey = await db.collection('animals').doc('monkey').get();
 
     expect(monkey).toHaveProperty('exists', true);
     expect(mockCollection).toHaveBeenCalledWith('animals');
@@ -151,10 +149,7 @@ describe('Queries', () => {
   });
 
   test('it can query null values', async () => {
-    const noLegs = await db
-      .collection('animals')
-      .where('legCount', '==', null)
-      .get();
+    const noLegs = await db.collection('animals').where('legCount', '==', null).get();
 
     expect(noLegs).toHaveProperty('size', 1);
     const worm = noLegs.docs[0];
@@ -163,10 +158,7 @@ describe('Queries', () => {
   });
 
   test('it can query false values', async () => {
-    const noFood = await db
-      .collection('animals')
-      .where('food', '==', false)
-      .get();
+    const noFood = await db.collection('animals').where('food', '==', false).get();
 
     expect(noFood).toHaveProperty('size', 1);
     const pogoStick = noFood.docs[0];
@@ -181,7 +173,7 @@ describe('Queries', () => {
       .get();
 
     expect(elephant).toHaveProperty('size', 1);
-    expect(elephant.docs[0].id).toEqual('elephant');
+    expect(elephant.docs[0].id).toBe('elephant');
   });
 
   test('it can query date values for greater than condition', async () => {
@@ -191,16 +183,13 @@ describe('Queries', () => {
       .get();
 
     expect(res).toHaveProperty('size', 2);
-    expect(res.docs[0].id).toEqual('chicken');
-    expect(res.docs[1].id).toEqual('ant');
+    expect(res.docs[0].id).toBe('chicken');
+    expect(res.docs[1].id).toBe('ant');
   });
 
   test('it can query multiple documents', async () => {
     expect.assertions(9);
-    const animals = await db
-      .collection('animals')
-      .where('type', '==', 'mammal')
-      .get();
+    const animals = await db.collection('animals').where('type', '==', 'mammal').get();
 
     expect(animals).toHaveProperty('docs', expect.any(Array));
     expect(mockCollection).toHaveBeenCalledWith('animals');
@@ -423,10 +412,7 @@ describe('Queries', () => {
       // eslint-disable-next-line quotes
       "it performs '$comp' queries on number values ($count doc(s) where legCount $comp $value)",
       async ({ comp, value, count }) => {
-        const results = await db
-          .collection('animals')
-          .where('legCount', comp, value)
-          .get();
+        const results = await db.collection('animals').where('legCount', comp, value).get();
         expect(results.size).toBe(count);
       },
     );
@@ -455,10 +441,7 @@ describe('Queries', () => {
       // eslint-disable-next-line quotes
       "it performs '$comp' queries on number values that may be zero ($count doc(s) where foodCount $comp $value)",
       async ({ comp, value, count }) => {
-        const results = await db
-          .collection('animals')
-          .where('foodCount', comp, value)
-          .get();
+        const results = await db.collection('animals').where('foodCount', comp, value).get();
         expect(results.size).toBe(count);
       },
     );
@@ -485,10 +468,7 @@ describe('Queries', () => {
       // eslint-disable-next-line quotes
       "it performs '$comp' queries on string values ($count doc(s) where type $comp '$value')",
       async ({ comp, value, count }) => {
-        const results = await db
-          .collection('animals')
-          .where('type', comp, value)
-          .get();
+        const results = await db.collection('animals').where('type', comp, value).get();
         expect(results.size).toBe(count);
       },
     );
@@ -507,10 +487,7 @@ describe('Queries', () => {
       // eslint-disable-next-line quotes
       "it performs '$comp' queries on array values ($count doc(s) where food $comp '$value')",
       async ({ comp, value, count }) => {
-        const results = await db
-          .collection('animals')
-          .where('food', comp, value)
-          .get();
+        const results = await db.collection('animals').where('food', comp, value).get();
         expect(results.size).toBe(count);
       },
     );
@@ -530,10 +507,7 @@ describe('Queries', () => {
       // eslint-disable-next-line quotes
       "it performs '$comp' queries on array values that may be zero ($count doc(s) where foodEaten $comp '$value')",
       async ({ comp, value, count }) => {
-        const results = await db
-          .collection('animals')
-          .where('foodEaten', comp, value)
-          .get();
+        const results = await db.collection('animals').where('foodEaten', comp, value).get();
         expect(results.size).toBe(count);
       },
     );

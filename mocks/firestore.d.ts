@@ -43,7 +43,7 @@ export class FakeFirestore {
   options: Record<string, never>;
   query: Query;
   collectionName: string;
-  
+
   constructor(stubbedDatabase?: DatabaseCollections, options?: Record<string, never>);
 
   getAll(): Array<MockedQuerySnapshot>;
@@ -61,7 +61,7 @@ declare class DocumentReference {
   parent: CollectionReference;
   firestore: FakeFirestore;
   path: string;
-  
+
   constructor(id: string, parent: CollectionReference);
 
   collection(collectionName: string): CollectionReference;
@@ -98,7 +98,7 @@ declare class CollectionReference extends FakeFirestore.Query {
   id: string;
   parent: DocumentReference;
   path: string;
-  
+
   constructor(id: string, parent: DocumentReference, firestore?: FakeFirestore);
 
   doc(id?: string): DocumentReference;
@@ -115,59 +115,61 @@ declare class CollectionReference extends FakeFirestore.Query {
 }
 
 // Mocks exported from this module
-export const mockBatch: jest.Mock;
-export const mockRunTransaction: jest.Mock;
+export const mockBatch: vi.Mock;
+export const mockRunTransaction: vi.Mock;
 
-export const mockCollection: jest.Mock;
-export const mockCollectionGroup: jest.Mock;
-export const mockDoc: jest.Mock;
-export const mockUpdate: jest.Mock;
-export const mockSet: jest.Mock;
-export const mockAdd: jest.Mock;
-export const mockDelete: jest.Mock;
-export const mockSettings: jest.Mock;
+export const mockCollection: vi.Mock;
+export const mockCollectionGroup: vi.Mock;
+export const mockDoc: vi.Mock;
+export const mockUpdate: vi.Mock;
+export const mockSet: vi.Mock;
+export const mockAdd: vi.Mock;
+export const mockDelete: vi.Mock;
+export const mockSettings: vi.Mock;
 
 // FIXME: We should decide whether this should be exported from auth or firestore
-export const mockUseEmulator: jest.Mock;
-export const mockListDocuments: jest.Mock;
+export const mockUseEmulator: vi.Mock;
+export const mockListDocuments: vi.Mock;
 
-export const mockBatchDelete: jest.Mock;
-export const mockBatchCommit: jest.Mock;
-export const mockBatchUpdate: jest.Mock;
-export const mockBatchSet: jest.Mock;
+export const mockBatchDelete: vi.Mock;
+export const mockBatchCommit: vi.Mock;
+export const mockBatchUpdate: vi.Mock;
+export const mockBatchSet: vi.Mock;
 
-export const mockOnSnapShot: jest.Mock;
+export const mockOnSnapShot: vi.Mock;
 
 // Mocks exported from FieldValue
-export const mockArrayUnionFieldValue: jest.Mock;
-export const mockArrayRemoveFieldValue: jest.Mock;
-export const mockDeleteFieldValue: jest.Mock;
-export const mockIncrementFieldValue: jest.Mock;
-export const mockServerTimestampFieldValue: jest.Mock;
+export const mockArrayUnionFieldValue: vi.Mock;
+export const mockArrayRemoveFieldValue: vi.Mock;
+export const mockDeleteFieldValue: vi.Mock;
+export const mockIncrementFieldValue: vi.Mock;
+export const mockServerTimestampFieldValue: vi.Mock;
 
 // Mocks exported from Query
-export const mockGet: jest.Mock;
-export const mockWhere: jest.Mock;
-export const mockLimit: jest.Mock;
-export const mockOrderBy: jest.Mock;
-export const mockOffset: jest.Mock;
-export const mockStartAfter: jest.Mock;
-export const mockStartAt: jest.Mock;
-export const mockQueryOnSnapshot: jest.Mock;
-export const mockWithConverter: jest.Mock;
+export const mockGet: vi.Mock;
+export const mockWhere: vi.Mock;
+export const mockLimit: vi.Mock;
+export const mockOrderBy: vi.Mock;
+export const mockOffset: vi.Mock;
+export const mockStartAfter: vi.Mock;
+export const mockStartAt: vi.Mock;
+export const mockQueryOnSnapshot: vi.Mock;
+export const mockWithConverter: vi.Mock;
 
 // Mocks exported from Timestamp
-export const mockTimestampToDate: jest.Mock;
-export const mockTimestampToMillis: jest.Mock;
-export const mockTimestampFromDate: jest.Mock;
-export const mockTimestampFromMillis: jest.Mock;
-export const mockTimestampNow: jest.Mock;
+export const mockTimestampToDate: vi.Mock;
+export const mockTimestampToMillis: vi.Mock;
+export const mockTimestampFromDate: vi.Mock;
+export const mockTimestampFromMillis: vi.Mock;
+export const mockTimestampNow: vi.Mock;
 
 // Mocks exported from Transaction
-export const mockGetAll: jest.Mock;
-export const mockGetAllTransaction: jest.Mock;
-export const mockGetTransaction: jest.Mock;
-export const mockSetTransaction: jest.Mock;
-export const mockUpdateTransaction: jest.Mock;
-export const mockDeleteTransaction: jest.Mock;
-export const mockCreateTransaction: jest.Mock;
+export const mockGetAll: vi.Mock;
+export const mockGetAllTransaction: vi.Mock;
+export const mockGetTransaction: vi.Mock;
+export const mockSetTransaction: vi.Mock;
+export const mockUpdateTransaction: vi.Mock;
+export const mockDeleteTransaction: vi.Mock;
+export const mockCreateTransaction: vi.Mock;
+export const mockListCollections: vi.Mock;
+export const mockSelect: vi.Mock;
