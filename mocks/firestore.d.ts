@@ -4,8 +4,8 @@ import type { Timestamp } from './timestamp.js';
 import type { Transaction } from './transaction.js';
 import type { FieldPath } from './path.js';
 
-import type { MockedDocument, DocumentData } from './helpers/buildDocFromHash';
-import type { MockedQuerySnapshot } from './helpers/buildQuerySnapShot';
+import type { MockedDocument, DocumentData } from './helpers/buildDocFromHash.js';
+import type { MockedQuerySnapshot } from './helpers/buildQuerySnapShot.js';
 
 interface DatabaseDocument extends DocumentData {
   id: string;

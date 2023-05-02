@@ -1,4 +1,4 @@
-import buildDocFromHash from './buildDocFromHash';
+import buildDocFromHash from './buildDocFromHash.js';
 
 export default function buildQuerySnapShot(requestedRecords, filters, selectFields) {
   const definiteRecords = requestedRecords.filter(rec => !!rec);
