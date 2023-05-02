@@ -1,3 +1,5 @@
+Forked from https://github.com/Upstatement/firestore-jest-mock -> s/jest/vi/g
+
 # Mock Firestore
 
 > Jest Mock for testing Google Cloud Firestore
