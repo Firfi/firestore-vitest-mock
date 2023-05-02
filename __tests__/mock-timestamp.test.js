@@ -1,5 +1,9 @@
-import { FakeFirestore } from '../index';
-import { mockTimestampToDate, mockTimestampToMillis, mockTimestampNow } from '../mocks/firestore';
+import { FakeFirestore } from '../index.js';
+import {
+  mockTimestampToDate,
+  mockTimestampToMillis,
+  mockTimestampNow,
+} from '../mocks/firestore.js';
 import admin from 'firebase-admin';
 const ref = admin.firestore.Timestamp;
 

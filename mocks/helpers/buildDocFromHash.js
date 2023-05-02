@@ -1,4 +1,4 @@
-import timestamp from '../timestamp';
+import timestamp from '../timestamp.js';
 
 export default function buildDocFromHash(hash = {}, id = 'abc123', selectFields = undefined) {
   const exists = !!hash || false;

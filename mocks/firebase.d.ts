@@ -1,5 +1,5 @@
-import type { FirebaseUser, FakeAuth } from './auth';
-import type { FakeFirestore } from './firestore';
+import type { FirebaseUser, FakeAuth } from './auth.js';
+import type { FakeFirestore } from './firestore.js';
 
 export interface DatabaseDocument {
   id: string;

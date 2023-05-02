@@ -1,6 +1,6 @@
 {
   "name": "firestore-vitest",
-  "version": "0.20.0",
+  "version": "0.20.1",
   "description": "Vitest helper for mocking Google Cloud Firestore",
   "author": "",
   "type": "module",

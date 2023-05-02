@@ -1,4 +1,4 @@
-import { mockFirebase } from '../index';
+import { mockFirebase } from '../index.js';
 mockFirebase({ database: {} });
 
 import {
@@ -7,7 +7,7 @@ import {
   mockDeleteFieldValue,
   mockIncrementFieldValue,
   mockServerTimestampFieldValue,
-} from '../mocks/firestore';
+} from '../mocks/firestore.js';
 
 describe('Single values transformed by field sentinels', () => {
   let firebase;

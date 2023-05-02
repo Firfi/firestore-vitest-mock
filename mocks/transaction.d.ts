@@ -1,5 +1,5 @@
-import type { Query } from './query';
-import type { MockedQuerySnapshot } from './helpers/buildQuerySnapShot';
+import type { Query } from './query.js';
+import type { MockedQuerySnapshot } from './helpers/buildQuerySnapShot.js';
 
 export class Transaction {
   getAll(...refsOrReadOptions: Array<Query | Record<string, never>>): Promise<Array<MockedQuerySnapshot>>;

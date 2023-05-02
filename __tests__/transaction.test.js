@@ -1,4 +1,4 @@
-import { mockFirebase, FakeFirestore } from '../index';
+import { mockFirebase, FakeFirestore } from '../index.js';
 import {
   mockRunTransaction,
   mockDelete,
@@ -12,7 +12,7 @@ import {
   mockGetAll,
   mockGetAllTransaction,
   mockCreateTransaction,
-} from '../mocks/firestore';
+} from '../mocks/firestore.js';
 
 describe('Transactions', () => {
   mockFirebase({

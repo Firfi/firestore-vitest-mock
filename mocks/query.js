@@ -1,4 +1,4 @@
-import buildQuerySnapShot from './helpers/buildQuerySnapShot';
+import buildQuerySnapShot from './helpers/buildQuerySnapShot.js';
 
 const mockGet = vi.fn();
 const mockSelect = vi.fn();

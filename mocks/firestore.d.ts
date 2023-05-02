@@ -1,8 +1,8 @@
-import type { FieldValue } from './fieldValue';
-import type { Query } from './query';
-import type { Timestamp } from './timestamp';
-import type { Transaction } from './transaction';
-import type { FieldPath } from './path';
+import type { FieldValue } from './fieldValue.js';
+import type { Query } from './query.js';
+import type { Timestamp } from './timestamp.js';
+import type { Transaction } from './transaction.js';
+import type { FieldPath } from './path.js';
 
 import type { MockedDocument, DocumentData } from './helpers/buildDocFromHash';
 import type { MockedQuerySnapshot } from './helpers/buildQuerySnapShot';

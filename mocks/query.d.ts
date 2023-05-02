@@ -1,5 +1,5 @@
-import type { FakeFirestore } from './firestore';
-import type { MockedQuerySnapshot } from './helpers/buildQuerySnapShot';
+import type { FakeFirestore } from './firestore.js';
+import type { MockedQuerySnapshot } from './helpers/buildQuerySnapShot.js';
 
 export class Query {
   constructor(collectionName: string, firestore: typeof FakeFirestore);

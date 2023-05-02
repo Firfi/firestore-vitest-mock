@@ -20,14 +20,14 @@ export const mockBatchSet = vi.fn();
 
 export const mockOnSnapShot = vi.fn();
 
-import timestamp from './timestamp';
-import fieldValue from './fieldValue';
-import query from './query';
-import transaction from './transaction';
-import path from './path';
+import timestamp from './timestamp.js';
+import fieldValue from './fieldValue.js';
+import query from './query.js';
+import transaction from './transaction.js';
+import path from './path.js';
 
-import buildDocFromHash from './helpers/buildDocFromHash';
-import buildQuerySnapShot from './helpers/buildQuerySnapShot';
+import buildDocFromHash from './helpers/buildDocFromHash.js';
+import buildQuerySnapShot from './helpers/buildQuerySnapShot.js';
 
 const _randomId = () => Math.floor(Math.random() * Number.MAX_SAFE_INTEGER).toString();
 

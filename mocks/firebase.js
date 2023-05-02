@@ -1,8 +1,8 @@
 export const mockInitializeApp = vi.fn();
 export const mockCert = vi.fn();
 
-import defaultOptions from './helpers/defaultMockOptions';
-import { FakeFirestore, FakeAuth } from '../index';
+import defaultOptions from './helpers/defaultMockOptions.js';
+import { FakeFirestore, FakeAuth } from '../index.js';
 
 export const firebaseStub = (overrides, options = defaultOptions) => {
   // Prepare namespaced classes

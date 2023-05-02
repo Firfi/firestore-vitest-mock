@@ -1,5 +1,5 @@
-import defaultOptions from './helpers/defaultMockOptions';
-import { FakeFirestore } from './firestore';
+import defaultOptions from './helpers/defaultMockOptions.js';
+import { FakeFirestore } from './firestore.js';
 export const firestoreStub = (overrides, options = defaultOptions) => {
   class Firestore extends FakeFirestore {
     constructor() {

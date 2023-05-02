@@ -5,8 +5,8 @@ import {
   mockWhere,
   mockOffset,
   FakeFirestore,
-} from '../mocks/firestore';
-import { mockFirebase } from '../index';
+} from '../mocks/firestore.js';
+import { mockFirebase } from '../index.js';
 
 describe('Queries', () => {
   mockFirebase(

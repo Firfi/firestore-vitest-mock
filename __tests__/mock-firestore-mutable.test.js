@@ -1,5 +1,5 @@
-import { FakeFirestore } from '../index';
-import { mockCollection, mockDoc } from '../mocks/firestore';
+import { FakeFirestore } from '../index.js';
+import { mockCollection, mockDoc } from '../mocks/firestore.js';
 
 describe('database mutations', () => {
   beforeEach(() => {

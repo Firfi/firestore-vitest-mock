@@ -1,4 +1,4 @@
-import { FakeFirestore } from '../index';
+import { FakeFirestore } from '../index.js';
 import {
   mockCollection,
   mockDoc,
@@ -8,7 +8,7 @@ import {
   mockOrderBy,
   mockStartAfter,
   mockStartAt,
-} from '../mocks/firestore';
+} from '../mocks/firestore.js';
 
 describe('Reference Sentinels', () => {
   beforeEach(() => {

@@ -1,6 +1,6 @@
-import { mockFirebase } from '../index';
+import { mockFirebase } from '../index.js';
 mockFirebase({ database: {} });
-import path from '../mocks/path';
+import path from '../mocks/path.js';
 
 describe('Single values transformed by field sentinels', () => {
   let firebase;

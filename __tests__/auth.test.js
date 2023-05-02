@@ -1,5 +1,5 @@
-import { mockFirebase } from '../index';
-import { mockInitializeApp } from '../mocks/firebase';
+import { mockFirebase } from '../index.js';
+import { mockInitializeApp } from '../mocks/firebase.js';
 import {
   mockCreateUserWithEmailAndPassword,
   mockSignInWithEmailAndPassword,
@@ -11,7 +11,7 @@ import {
   mockCreateCustomToken,
   mockSetCustomUserClaims,
   mockUseEmulator,
-} from '../mocks/auth';
+} from '../mocks/auth.js';
 
 describe('we can start a firebase application', () => {
   mockFirebase({

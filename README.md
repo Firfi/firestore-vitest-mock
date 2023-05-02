@@ -99,7 +99,7 @@ This will populate a fake database with a `users` and `posts` collection. This d
 Now you can write queries or requests for data just as you would with Firestore:
 
 ```js
-import { mockCollection } from 'firestore-vitest/mocks/firestore';
+import { mockCollection } from 'firestore-vitest/mocks/firestore.js';
 
 test('testing stuff', () => {
   import firebase from 'firebase'; // or import firebase from 'firebase';
@@ -120,7 +120,7 @@ test('testing stuff', () => {
 In TypeScript, you would import `mockCollection` using ES module syntax:
 
 ```TypeScript
-import { mockCollection } from 'firestore-vitest/mocks/firestore';
+import { mockCollection } from 'firestore-vitest/mocks/firestore.js';
 ```
 
 The other mock functions may be imported similarly.
@@ -142,10 +142,10 @@ mockGoogleCloudFirestore({
   },
 });
 
-import { mockCollection } from 'firestore-vitest/mocks/firestore';
+import { mockCollection } from 'firestore-vitest/mocks/firestore.js';
 
 test('testing stuff', () => {
-  import { Firestore } from '@google-cloud/firestore';
+  import { Firestore } from '@google-cloud/firestore.js';
   const firestore = new Firestore();
 
   return firestore
@@ -178,10 +178,10 @@ mockReactNativeFirestore({
   },
 });
 
-import { mockCollection } from 'firestore-vitest/mocks/firestore';
+import { mockCollection } from 'firestore-vitest/mocks/firestore.js';
 
 test('testing stuff', () => {
-  import { Firestore } from '@react-native-firebase/firestore';
+  import { Firestore } from '@react-native-firebase/firestore.js';
   const firestore = new Firestore();
 
   return firestore
@@ -234,7 +234,7 @@ Similar to how the `id` key defines a document object to firestore-vitest, the `
 This lets you model and validate more complex document access:
 
 ```js
-import { mockCollection, mockDoc } from 'firestore-vitest/mocks/firestore';
+import { mockCollection, mockDoc } from 'firestore-vitest/mocks/firestore.js';
 
 test('testing stuff', () => {
   import firebase from 'firebase';
@@ -280,7 +280,7 @@ We have a conditional query here. If you pass `state` to this function, we will 
 import { mockFirebase } from 'firestore-vitest';
 
 // Import the mock versions of the functions you expect to be called
-import { mockCollection, mockWhere } from 'firestore-vitest/mocks/firestore';
+import { mockCollection, mockWhere } from 'firestore-vitest/mocks/firestore.js';
 describe('we can query', () => {
   mockFirebase({
     database: {
