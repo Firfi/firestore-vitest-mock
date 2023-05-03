@@ -2,7 +2,7 @@
 
 not useful until https://github.com/vitest-dev/vitest/issues/3284 is resolved
 
-Forked from https://github.com/Upstatement/firestore-jest-mock -> s/jest/vi/g
+Forked from https://github.com/Upstatement/firestore-jest-mock, but more than just s/jest/vi/g
 
 # Mock Firestore
 
